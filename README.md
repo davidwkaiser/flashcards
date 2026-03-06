@@ -202,6 +202,15 @@ spring.jpa.show-sql=true                          # Enable SQL logging
 spring.jpa.properties.hibernate.format_sql=true   # Format SQL output
 ```
 
+## Authentication
+
+- `POST /api/auth/register` - Register a new user. Request body JSON: `{ "email": "user@example.com", "password": "secret" }`
+- `POST /api/auth/login` - Login with email and password. Returns JSON `{ "token": "<jwt>", "email": "user@example.com" }`
+
+Notes:
+- Include the token in subsequent requests using the header `Authorization: Bearer <token>` to access protected endpoints.
+- The backend issues JWTs; store tokens securely on the frontend (e.g., in memory or secure storage) and attach to requests from the React app.
+
 ## Future Enhancements
 
 - [ ] User authentication and authorization
