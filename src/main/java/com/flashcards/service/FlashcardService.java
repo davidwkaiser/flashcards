@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.flashcards.model.Flashcard;
@@ -26,7 +27,8 @@ public class FlashcardService {
     }
 
     public List<Flashcard> getAllFlashcards() {
-        return flashcardRepository.findAll();
+        // Return newest flashcards first (descending createdAt)
+        return flashcardRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 
     public List<Flashcard> getFlashcardsByLanguage(String language) {
