@@ -18,11 +18,17 @@ public class FlashcardService {
 
     // Create
     public Flashcard createFlashcard(Flashcard flashcard) {
+        if (flashcard == null) {
+            throw new IllegalArgumentException("Flashcard cannot be null");
+        }
         return flashcardRepository.save(flashcard);
     }
 
     // Read
     public Optional<Flashcard> getFlashcardById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("ID cannot be null");
+        }
         return flashcardRepository.findById(id);
     }
 
@@ -32,15 +38,15 @@ public class FlashcardService {
     }
 
     public List<Flashcard> getFlashcardsByLanguage(String language) {
-        return flashcardRepository.findByLanguage(language);
+        return flashcardRepository.findByLanguageOrderByCreatedAtDesc(language);
     }
 
     public List<Flashcard> getFlashcardsByDifficulty(Integer difficulty) {
-        return flashcardRepository.findByDifficulty(difficulty);
+        return flashcardRepository.findByDifficultyOrderByCreatedAtDesc(difficulty);
     }
 
     public List<Flashcard> getFlashcardsByLanguageAndDifficulty(String language, Integer difficulty) {
-        return flashcardRepository.findByLanguageAndDifficulty(language, difficulty);
+        return flashcardRepository.findByLanguageAndDifficultyOrderByCreatedAtDesc(language, difficulty);
     }
 
     public List<Flashcard> searchFlashcards(String keyword) {
