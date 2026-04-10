@@ -37,21 +37,21 @@ public class FlashcardService {
         return flashcardRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 
-    public List<Flashcard> getFlashcardsByLanguage(String language) {
-        return flashcardRepository.findByLanguageOrderByCreatedAtDesc(language);
-    }
+    // public List<Flashcard> getFlashcardsByLanguage(String language) {
+    //     return flashcardRepository.findByLanguageOrderByCreatedAtDesc(language);
+    // }
 
-    public List<Flashcard> getFlashcardsByDifficulty(Integer difficulty) {
-        return flashcardRepository.findByDifficultyOrderByCreatedAtDesc(difficulty);
-    }
+    // public List<Flashcard> getFlashcardsByDifficulty(Integer difficulty) {
+    //     return flashcardRepository.findByDifficultyOrderByCreatedAtDesc(difficulty);
+    // }
 
-    public List<Flashcard> getFlashcardsByLanguageAndDifficulty(String language, Integer difficulty) {
-        return flashcardRepository.findByLanguageAndDifficultyOrderByCreatedAtDesc(language, difficulty);
-    }
+    // public List<Flashcard> getFlashcardsByLanguageAndDifficulty(String language, Integer difficulty) {
+    //     return flashcardRepository.findByLanguageAndDifficultyOrderByCreatedAtDesc(language, difficulty);
+    // }
 
-    public List<Flashcard> searchFlashcards(String keyword) {
-        return flashcardRepository.findByForeignWordContainingIgnoreCase(keyword);
-    }
+    // public List<Flashcard> searchFlashcards(String keyword) {
+    //     return flashcardRepository.findByForeignWordContainingIgnoreCase(keyword);
+    // }
 
     // Update
     public Optional<Flashcard> updateFlashcard(Long id, Flashcard updatedFlashcard) {
@@ -84,9 +84,9 @@ public class FlashcardService {
         return false;
     }
 
-    public void deleteAllFlashcards() {
-        flashcardRepository.deleteAll();
-    }
+    // public void deleteAllFlashcards() {
+    //     flashcardRepository.deleteAll();
+    // }
 
     public long getTotalFlashcards() {
         return flashcardRepository.count();

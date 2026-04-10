@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.flashcards.model.Flashcard;
@@ -53,43 +52,43 @@ public class FlashcardController {
     }
 
     // READ - Get flashcards by language
-    @GetMapping("/language/{language}")
-    public ResponseEntity<List<Flashcard>> getFlashcardsByLanguage(@PathVariable String language) {
-        List<Flashcard> flashcards = flashcardService.getFlashcardsByLanguage(language);
-        return ResponseEntity.ok(flashcards);
-    }
+    // @GetMapping("/language/{language}")
+    // public ResponseEntity<List<Flashcard>> getFlashcardsByLanguage(@PathVariable String language) {
+    //     List<Flashcard> flashcards = flashcardService.getFlashcardsByLanguage(language);
+    //     return ResponseEntity.ok(flashcards);
+    // }
 
     // READ - Get flashcards by difficulty
-    @GetMapping("/difficulty/{difficulty}")
-    public ResponseEntity<List<Flashcard>> getFlashcardsByDifficulty(@PathVariable Integer difficulty) {
-        if (difficulty < 1 || difficulty > 3) {
-            return ResponseEntity.badRequest().build();
-        }
-        List<Flashcard> flashcards = flashcardService.getFlashcardsByDifficulty(difficulty);
-        return ResponseEntity.ok(flashcards);
-    }
+    // @GetMapping("/difficulty/{difficulty}")
+    // public ResponseEntity<List<Flashcard>> getFlashcardsByDifficulty(@PathVariable Integer difficulty) {
+    //     if (difficulty < 1 || difficulty > 3) {
+    //         return ResponseEntity.badRequest().build();
+    //     }
+    //     List<Flashcard> flashcards = flashcardService.getFlashcardsByDifficulty(difficulty);
+    //     return ResponseEntity.ok(flashcards);
+    // }
 
     // READ - Get flashcards by language and difficulty
-    @GetMapping("/language/{language}/difficulty/{difficulty}")
-    public ResponseEntity<List<Flashcard>> getFlashcardsByLanguageAndDifficulty(
-            @PathVariable String language,
-            @PathVariable Integer difficulty) {
-        if (difficulty < 1 || difficulty > 3) {
-            return ResponseEntity.badRequest().build();
-        }
-        List<Flashcard> flashcards = flashcardService.getFlashcardsByLanguageAndDifficulty(language, difficulty);
-        return ResponseEntity.ok(flashcards);
-    }
+    // @GetMapping("/language/{language}/difficulty/{difficulty}")
+    // public ResponseEntity<List<Flashcard>> getFlashcardsByLanguageAndDifficulty(
+    //         @PathVariable String language,
+    //         @PathVariable Integer difficulty) {
+    //     if (difficulty < 1 || difficulty > 3) {
+    //         return ResponseEntity.badRequest().build();
+    //     }
+    //     List<Flashcard> flashcards = flashcardService.getFlashcardsByLanguageAndDifficulty(language, difficulty);
+    //     return ResponseEntity.ok(flashcards);
+    // }
 
     // READ - Search flashcards by keyword
-    @GetMapping("/search")
-    public ResponseEntity<List<Flashcard>> searchFlashcards(@RequestParam String keyword) {
-        if (keyword == null || keyword.trim().isEmpty()) {
-            return ResponseEntity.badRequest().build();
-        }
-        List<Flashcard> flashcards = flashcardService.searchFlashcards(keyword);
-        return ResponseEntity.ok(flashcards);
-    }
+    // @GetMapping("/search")
+    // public ResponseEntity<List<Flashcard>> searchFlashcards(@RequestParam String keyword) {
+    //     if (keyword == null || keyword.trim().isEmpty()) {
+    //         return ResponseEntity.badRequest().build();
+    //     }
+    //     List<Flashcard> flashcards = flashcardService.searchFlashcards(keyword);
+    //     return ResponseEntity.ok(flashcards);
+    // }
 
     // UPDATE - Update a flashcard
     @PutMapping("/{id}")
@@ -115,13 +114,13 @@ public class FlashcardController {
     }
 
     // DELETE - Delete all flashcards
-    @DeleteMapping
-    public ResponseEntity<Map<String, String>> deleteAllFlashcards() {
-        flashcardService.deleteAllFlashcards();
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "All flashcards deleted successfully");
-        return ResponseEntity.ok(response);
-    }
+    // @DeleteMapping
+    // public ResponseEntity<Map<String, String>> deleteAllFlashcards() {
+    //     flashcardService.deleteAllFlashcards();
+    //     Map<String, String> response = new HashMap<>();
+    //     response.put("message", "All flashcards deleted successfully");
+    //     return ResponseEntity.ok(response);
+    // }
 
     // STATS - Get total number of flashcards
     @GetMapping("/stats/total")
